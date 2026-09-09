@@ -26,7 +26,7 @@ window.onload = function() {
 	board.width = boardWidth;
 	context = board.getContext("2d"); //used to draw on the board
 
-	//draw flappy bird 
+	//draw flappy bird
 	context.fillStyle = "green";
 	context.fillRect(birdXPosition, birdYPosition, birdWidth, birdHeight);
 
