@@ -33,6 +33,7 @@ let bottomPipeImg;
 //physics
 let velocityX = -2; //pipespeed to the left
 let velocityY = 0; //bird jump speed
+let gravity = 0.4;
 
 
 //Sets the board dimensions to the one stated in the top
@@ -71,6 +72,7 @@ function update() {
 	context.clearRect(0,0, board.width, board.height);
 
 	//bird
+	velocityY += gravity;
 	Bird.y += velocityY;
 	context.drawImage(birdImg, Bird.x, Bird.y, Bird.width, Bird.height);
 
