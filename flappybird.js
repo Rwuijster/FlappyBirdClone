@@ -5,7 +5,7 @@ let boardWidth = 360;
 let boardHeight = 640;
 let context;
 
-//variables for the bird
+//variables for the bird/
 let birdWidth = 34; // 34/24 is the ratio
 let birdHeight = 24;
 let birdXPosition = boardWidth / 8;
