@@ -30,6 +30,9 @@ let pipeY = 0;
 let topPipeImg;
 let bottomPipeImg;
 
+//physics
+let velocityX = -2; //pipespeed to the left
+
 //Sets the board dimensions to the one stated in the top
 window.onload = function() {
 	board = document.getElementById("board");
@@ -68,20 +71,35 @@ function update() {
 	//pipes
 	for (let i = 0; i < pipeArray.length; i++) {
 		let pipe = pipeArray[i];
+		pipe.x += velocityX;
 		context.drawImage(pipe.img, pipe.x, pipe.y, pipe.width, pipe.height);
 	}
 }
 
 function placePipes() {
 
+	let randomPipeY = pipeY - pipeHeight/4 - Math.random()*(pipeHeight/2);
+	let openingSpace = board.height /4;
+
 	let topPipe = {
 		img : topPipeImg,
 		x : pipeX,
-		y : pipeY,
+		y : randomPipeY,
 		width : pipeWidth,
 		height : pipeHeight,
 		passed : false
 	}
 
 	pipeArray.push(topPipe);
+
+	let bottomPipe = {
+		img : bottomPipeImg,
+		x : pipeX,
+		y : randomPipeY + pipeHeight + openingSpace,
+		width: pipeWidth,
+		height: pipeHeight,
+		passed: false
+	}
+
+	pipeArray.push(bottomPipe)
 }
