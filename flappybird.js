@@ -32,6 +32,8 @@ let bottomPipeImg;
 
 //physics
 let velocityX = -2; //pipespeed to the left
+let velocityY = 0; //bird jump speed
+
 
 //Sets the board dimensions to the one stated in the top
 window.onload = function() {
@@ -59,13 +61,17 @@ window.onload = function() {
 
 	requestAnimationFrame(update);
 	setInterval(placePipes, 1500);
+	document.addEventListener("keydown", moveBird);
 }
 
+
+//Loop that draws bird and pipes
 function update() {
 	requestAnimationFrame(update);
 	context.clearRect(0,0, board.width, board.height);
 
 	//bird
+	Bird.y += velocityY;
 	context.drawImage(birdImg, Bird.x, Bird.y, Bird.width, Bird.height);
 
 	//pipes
@@ -76,6 +82,8 @@ function update() {
 	}
 }
 
+
+//Function to spawn pipes and move them left
 function placePipes() {
 
 	let randomPipeY = pipeY - pipeHeight/4 - Math.random()*(pipeHeight/2);
@@ -102,4 +110,11 @@ function placePipes() {
 	}
 
 	pipeArray.push(bottomPipe)
+}
+
+
+// Function to control bird
+function moveBird(e) {
+	if (e.code = "Space" || e.code == "ArrowUp")
+		velocityY= -6;
 }
